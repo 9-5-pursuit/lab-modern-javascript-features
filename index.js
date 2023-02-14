@@ -14,11 +14,12 @@ const moons = [
 
   You should not need to make any other changes to the code.
 */
-function organizeMoonsByPlanet(moons) {
+// Fixed the 'function' keyword to Arrow syntax.
+// I changed the syntax of the variables 'name' and 'planet' using object desctructuring.
+const organizeMoonsByPlanet = (moons) => {
   const result = {};
   for (let moon of moons) {
-    const name = moon.name;
-    const planet = moon.planet;
+    const {name, planet} = moon;
     if (result[planet]) {
       result[planet].push(name);
     } else {
@@ -31,13 +32,15 @@ function organizeMoonsByPlanet(moons) {
 /*
   To update this function, you should:
   - Change the function to use arrow syntax, while keeping the name of the function the same.
-  - Use object destructuring and the rest operator to assign the `closest` and `rest` variables.
+  - Use array destructuring and the rest operator to assign the `closest` and `rest` variables.
 
   You should not need to make any other changes to the code.
 */
-function getClosestToPlanet(moons) {
-  let closest = moons[0];
-  const rest = moons.slice(1);
+// Fixed the 'function' keyword to Arrow syntax.
+// I changed the syntaxx of variables 'closest' and 'rest' using Array destructuring.
+// Used the rest operator while changing the syntax to condense the other indexes together.
+const getClosestToPlanet = (moons) => {
+  let [closest, ...rest] = moons;
 
   for (let moon of rest) {
     if (moon.distanceFromPlanetInKm < closest.distanceFromPlanetInKm) {
@@ -56,17 +59,18 @@ function getClosestToPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function createMoon(name, planet, distanceFromPlanetInKm) {
+// Fixed the 'function' keyword to Arrow syntax.
+// Set the argument for distanceFromPlanetInKm to default to "Unknown".
+// Fixed the returning object to Object shorthand.
+const createMoon = (name, planet, distanceFromPlanetInKm = "Unknown") => {
   if (!name || !planet) {
     return "Name and planet are required.";
   }
-
-  distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
-
+  
   return {
-    name: name,
-    planet: planet,
-    distanceFromPlanetInKm: distanceFromPlanetInKm,
+    name,
+    planet,
+    distanceFromPlanetInKm,
   };
 }
 
