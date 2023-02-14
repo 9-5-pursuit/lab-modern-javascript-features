@@ -14,20 +14,19 @@ const moons = [
 
   You should not need to make any other changes to the code.
 */
-function organizeMoonsByPlanet(moons) {
+
+// Object Destructuring to assign the 'name' and 'planet' variables while keeping the rest of the code the same.
+
+const organizeMoonsByPlanet = (moons) => {
   const result = {};
-  for (let moon of moons) {
-    const name = moon.name;
-    const planet = moon.planet;
-    if (result[planet]) {
-      result[planet].push(name);
-    } else {
+  for (let { name, planet } of moons) {
+    if (result[planet].push(name));
+    else {
       result[planet] = [name];
     }
   }
   return result;
-}
-
+};
 /*
   To update this function, you should:
   - Change the function to use arrow syntax, while keeping the name of the function the same.
@@ -35,9 +34,11 @@ function organizeMoonsByPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function getClosestToPlanet(moons) {
-  let closest = moons[0];
-  const rest = moons.slice(1);
+
+// Object Destructuring and the rest operator to assign the 'closest' and 'rest' variables while keeping the rest of the code the same.
+
+const getClosestToPlanet = (moons) => {
+  let [closest, ...rest] = moons;
 
   for (let moon of rest) {
     if (moon.distanceFromPlanetInKm < closest.distanceFromPlanetInKm) {
@@ -46,7 +47,7 @@ function getClosestToPlanet(moons) {
   }
 
   return closest.name;
-}
+};
 
 /*
   To update this function, you should:
@@ -56,19 +57,20 @@ function getClosestToPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function createMoon(name, planet, distanceFromPlanetInKm) {
+
+// Object Shorthand to create the new object while keeping the rest of the code the same.
+
+const createMoon = (name, planet, distanceFromPlanetInKm = "Unknown") => {
   if (!name || !planet) {
     return "Name and planet are required.";
   }
 
-  distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
-
   return {
-    name: name,
-    planet: planet,
-    distanceFromPlanetInKm: distanceFromPlanetInKm,
+    name,
+    planet,
+    distanceFromPlanetInKm,
   };
-}
+};
 
 module.exports = {
   organizeMoonsByPlanet,
