@@ -59,15 +59,15 @@ const getClosestToPlanet = (moons) => {
 */
 // function createMoon(name, planet, distanceFromPlanetInKm) {
 const createMoon = (name, planet, distanceFromPlanetInKm = "Unknown") => {
-  // if (!name || !planet) {
-  //   return "Name and planet are required.";
-  // }
-  // distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
-  // return {
-  //   name,
-  //   planet,
-  //   distanceFromPlanetInKm,
-  // };
+  if (!name || !planet) {
+    return "Name and planet are required.";
+  }
+  distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
+  return {
+    name,
+    planet,
+    distanceFromPlanetInKm,
+  };
 };
 
 module.exports = {
