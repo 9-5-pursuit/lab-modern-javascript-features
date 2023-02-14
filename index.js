@@ -14,11 +14,15 @@ const moons = [
 
   You should not need to make any other changes to the code.
 */
-function organizeMoonsByPlanet(moons) {
+//Need to change the function to arrow syntax => Complete
+// Deconstruct the object within the for of loop => Complete
+//remove the original variables => Complete
+const organizeMoonsByPlanet = (moons) => {
   const result = {};
+
   for (let moon of moons) {
-    const name = moon.name;
-    const planet = moon.planet;
+    const { name, planet } = moon;
+
     if (result[planet]) {
       result[planet].push(name);
     } else {
@@ -26,18 +30,21 @@ function organizeMoonsByPlanet(moons) {
     }
   }
   return result;
-}
+};
 
 /*
   To update this function, you should:
   - Change the function to use arrow syntax, while keeping the name of the function the same.
-  - Use object destructuring and the rest operator to assign the `closest` and `rest` variables.
+  - Use array destructuring and the rest operator to assign the `closest` and `rest` variables.
 
   You should not need to make any other changes to the code.
 */
-function getClosestToPlanet(moons) {
-  let closest = moons[0];
-  const rest = moons.slice(1);
+// change function to arrow syntax => Complete
+// destructure array use let instead of const so array is mutable => Complete
+// rest operator used within the array  => Complete
+
+const getClosestToPlanet = (moons) => {
+  let [closest, ...rest] = moons;
 
   for (let moon of rest) {
     if (moon.distanceFromPlanetInKm < closest.distanceFromPlanetInKm) {
@@ -46,7 +53,7 @@ function getClosestToPlanet(moons) {
   }
 
   return closest.name;
-}
+};
 
 /*
   To update this function, you should:
@@ -56,19 +63,20 @@ function getClosestToPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function createMoon(name, planet, distanceFromPlanetInKm) {
+//Change from function to arrow syntax =>
+//Defaulting the param set it equal to the outcome you want => Complete
+//Create object shorthand => Complete
+const createMoon = (name, planet, distanceFromPlanetInKm = "Unknown") => {
   if (!name || !planet) {
     return "Name and planet are required.";
   }
 
-  distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
-
   return {
-    name: name,
-    planet: planet,
-    distanceFromPlanetInKm: distanceFromPlanetInKm,
+    name,
+    planet,
+    distanceFromPlanetInKm,
   };
-}
+};
 
 module.exports = {
   organizeMoonsByPlanet,
