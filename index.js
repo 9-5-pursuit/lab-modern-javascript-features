@@ -15,7 +15,7 @@ const moons = [
   You should not need to make any other changes to the code.
 */
 const organizeMoonsByPlanet = (moons) => {
-  
+
   const result = {};
   moons.forEach(item => {const {name, planet} = item; result[planet] ? result[planet].push(name) : result[planet] = [name]});
   return result
@@ -51,13 +51,11 @@ const createMoon = (name, planet, distanceFromPlanetInKm="Unknown") => {
     return "Name and planet are required.";
   }
 
-  var obj = {}
-
-  obj['name'] = name
-  obj['planet'] = planet
-  obj['distanceFromPlanetInKm'] = distanceFromPlanetInKm
-
-  return obj;
+  return {
+    name,
+    planet,
+    distanceFromPlanetInKm
+  }
 }
 
 module.exports = {
