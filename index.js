@@ -14,18 +14,12 @@ const moons = [
 
   You should not need to make any other changes to the code.
 */
-function organizeMoonsByPlanet(moons) {
+const organizeMoonsByPlanet = (moons) => {
+  
   const result = {};
-  for (let moon of moons) {
-    const name = moon.name;
-    const planet = moon.planet;
-    if (result[planet]) {
-      result[planet].push(name);
-    } else {
-      result[planet] = [name];
-    }
-  }
-  return result;
+  moons.forEach(item => {const {name, planet} = item; result[planet] ? result[planet].push(name) : result[planet] = [name]});
+  return result
+
 }
 
 /*
@@ -35,17 +29,13 @@ function organizeMoonsByPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function getClosestToPlanet(moons) {
-  let closest = moons[0];
-  const rest = moons.slice(1);
+const getClosestToPlanet = (moons) => {
 
+  let [closest, ...rest] = moons
   for (let moon of rest) {
-    if (moon.distanceFromPlanetInKm < closest.distanceFromPlanetInKm) {
-      closest = moon;
-    }
+    if (moon.distanceFromPlanetInKm<= closest.distanceFromPlanetInKm) closest = moon;
   }
-
-  return closest.name;
+  return closest.name
 }
 
 /*
@@ -56,18 +46,18 @@ function getClosestToPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function createMoon(name, planet, distanceFromPlanetInKm) {
+const createMoon = (name, planet, distanceFromPlanetInKm="Unknown") => {
   if (!name || !planet) {
     return "Name and planet are required.";
   }
 
-  distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
+  var obj = {}
 
-  return {
-    name: name,
-    planet: planet,
-    distanceFromPlanetInKm: distanceFromPlanetInKm,
-  };
+  obj['name'] = name
+  obj['planet'] = planet
+  obj['distanceFromPlanetInKm'] = distanceFromPlanetInKm
+
+  return obj;
 }
 
 module.exports = {
