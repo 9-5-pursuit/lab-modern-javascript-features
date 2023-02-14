@@ -18,7 +18,7 @@ You've been tasked with updating some code to rely on more modern JavaScript fea
 
 ## Instructions
 
-You'll update three functions inside of the `index.js` file. For each function, you will need to follow the comments and the tests to update the code. You should not need ot make any other changes to the code other than what is asked of you.
+You'll update three functions inside of the `index.js` file. For each function, you will need to follow the comments and the tests to update the code. You should not need to make any other changes to the code other than what is asked of you.
 
 The failing tests in this lab are looking for specific syntax in your code. Because these tests can be a bit finicky, reach out to an instructor if you think you've completed what's been asked of you but still have failing tests.
 
