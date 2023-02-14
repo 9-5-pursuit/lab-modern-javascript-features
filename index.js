@@ -14,11 +14,10 @@ const moons = [
 
   You should not need to make any other changes to the code.
 */
-function organizeMoonsByPlanet(moons) {
+const organizeMoonsByPlanet = (moons) => {
   const result = {};
   for (let moon of moons) {
-    const name = moon.name;
-    const planet = moon.planet;
+   const {name, planet } = moon
     if (result[planet]) {
       result[planet].push(name);
     } else {
@@ -26,7 +25,10 @@ function organizeMoonsByPlanet(moons) {
     }
   }
   return result;
+ 
 }
+// removed the word function and using arrow syntax set function name to a variable equal to arguments, then arrow, then object destructed to assign variable name and planet.  
+
 
 /*
   To update this function, you should:
@@ -35,10 +37,8 @@ function organizeMoonsByPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function getClosestToPlanet(moons) {
-  let closest = moons[0];
-  const rest = moons.slice(1);
-
+const getClosestToPlanet = (moons) => {
+let [closest, ...rest] = moons
   for (let moon of rest) {
     if (moon.distanceFromPlanetInKm < closest.distanceFromPlanetInKm) {
       closest = moon;
@@ -46,7 +46,10 @@ function getClosestToPlanet(moons) {
   }
 
   return closest.name;
+
 }
+
+// remove function and using arrow syntax set function to variable using const equal to argument, then arrow, then object destructed to assign closest and rest variables using spread operator. I had to set object destructing to let because closest was being redeclared further in the function. 
 
 /*
   To update this function, you should:
@@ -56,7 +59,7 @@ function getClosestToPlanet(moons) {
 
   You should not need to make any other changes to the code.
 */
-function createMoon(name, planet, distanceFromPlanetInKm) {
+const createMoon = (name, planet, distanceFromPlanetInKm = "Unknown") => {
   if (!name || !planet) {
     return "Name and planet are required.";
   }
@@ -64,11 +67,12 @@ function createMoon(name, planet, distanceFromPlanetInKm) {
   distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
 
   return {
-    name: name,
-    planet: planet,
-    distanceFromPlanetInKm: distanceFromPlanetInKm,
+    name,
+    planet,
+    distanceFromPlanetInKm,
   };
 }
+// removed function keyword and using arrow syntax replaced with const and set to arguments, changed distanceFromPlanetInKm to unknown (default parameters), then removed values from the keys being returned using object short hand.
 
 module.exports = {
   organizeMoonsByPlanet,
