@@ -17,8 +17,6 @@ const moons = [
 const organizeMoonsByPlanet = moons =>  {
   const result = {};
   for (let moon of moons) {
- 
-
     const { name, planet } = moon;
     
     if (result[planet]) {
@@ -29,23 +27,6 @@ const organizeMoonsByPlanet = moons =>  {
   }
   return result;
 }
-
-
-// let organizeMoonsByPlanet = moons =>  {
-//   const result = {};
-//   if (moons){
-//     const { name, planet } = moons;
-//     if (result[planet]) {
-//       result[planet].push(name);
-//     } else {
-//       result[planet] = [name];
-//     }
-//   }
-//   return result;
-// }
-
-
-// const { name, orbitalPeriodInDays } = planet;
 
 // function User(name) {
 //   this.name = name;
@@ -64,8 +45,6 @@ const organizeMoonsByPlanet = moons =>  {
   You should not need to make any other changes to the code.
 */
 const getClosestToPlanet = moons => {
-  // let closest = moons[0];
-  // const rest = moons.slice(1);
  let [closest, ...rest] = moons;
 
   for (let moon of rest) {
@@ -89,8 +68,6 @@ const getClosestToPlanet = moons => {
   if (!name || !planet) {
     return "Name and planet are required.";
   }
-
-
   return {
     name,
     planet,
