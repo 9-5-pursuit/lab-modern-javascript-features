@@ -13,12 +13,17 @@ const moons = [
   - Use object destructuring to assign the `name` and `planet` variables.
 
   You should not need to make any other changes to the code.
+  ----------------------------------------------------------------
+  - replaced function keyword with const 
+  - var to equal function execution
+  - param (moons) array followed by => to function body to make arrow function
+  - destructured new name and planet vars to match store moons keys
 */
-function organizeMoonsByPlanet(moons) {
+const organizeMoonsByPlanet = (moons) => {
   const result = {};
   for (let moon of moons) {
-    const name = moon.name;
-    const planet = moon.planet;
+    const { name, planet } = moon;
+
     if (result[planet]) {
       result[planet].push(name);
     } else {
@@ -26,7 +31,7 @@ function organizeMoonsByPlanet(moons) {
     }
   }
   return result;
-}
+};
 
 /*
   To update this function, you should:
@@ -34,10 +39,14 @@ function organizeMoonsByPlanet(moons) {
   - Use object destructuring and the rest operator to assign the `closest` and `rest` variables.
 
   You should not need to make any other changes to the code.
+  ----------------------------------------------------------------
+  -  replaced function keyword with const 
+  - to equal function execution
+  - destructured by naming 2 vars to reference moons array
+  - rest operator to gather rest of planets into seperate array
 */
-function getClosestToPlanet(moons) {
-  let closest = moons[0];
-  const rest = moons.slice(1);
+const getClosestToPlanet = (moons) => {
+  let [closest, ...rest] = moons;
 
   for (let moon of rest) {
     if (moon.distanceFromPlanetInKm < closest.distanceFromPlanetInKm) {
@@ -46,7 +55,7 @@ function getClosestToPlanet(moons) {
   }
 
   return closest.name;
-}
+};
 
 /*
   To update this function, you should:
@@ -55,20 +64,23 @@ function getClosestToPlanet(moons) {
   - Use object shorthand to create the new object.
 
   You should not need to make any other changes to the code.
+  ----------------------------------------------------------------
+  - replaced function keyword with const
+  - to equal function execution
+  - default value of distanceFromPlanetInKm to "Unknown"
+  - object shorthand to create new object by removing (key:)
 */
-function createMoon(name, planet, distanceFromPlanetInKm) {
+const createMoon = (name, planet, distanceFromPlanetInKm = "Unknown") => {
   if (!name || !planet) {
     return "Name and planet are required.";
   }
 
-  distanceFromPlanetInKm = distanceFromPlanetInKm || "Unknown";
-
   return {
-    name: name,
-    planet: planet,
-    distanceFromPlanetInKm: distanceFromPlanetInKm,
+    name,
+    planet,
+    distanceFromPlanetInKm,
   };
-}
+};
 
 module.exports = {
   organizeMoonsByPlanet,
